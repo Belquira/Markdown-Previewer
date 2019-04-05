@@ -1,26 +1,28 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { editText } from "../Redux/actions";
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
     return {
-      textEditor: () => {
-          dispatch()
-      }
+      updateText: (content) => dispatch(editText(content))
       }
   };
 
+
 class Editor extends Component {
+    
     state = {
         content: ""
     }
+
     onChange = (e) => {
         this.setState({content: e.target.value});
+        this.props.updateText(e.target.value);
     }
     render(){
         return(
             <div>
                  Editor
-                
                 <textarea id="editor" value={this.state.content} onChange={this.onChange}></textarea>
                 
                 
@@ -29,5 +31,6 @@ class Editor extends Component {
     }
 }
 
+const ConnectedComponent = connect(null, mapDispatchToProps)(Editor);
 
-export default Editor;
+export default ConnectedComponent;
