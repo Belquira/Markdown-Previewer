@@ -1,43 +1,7 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import marked from "marked";
+import React from "react";
 
-const mapStateToProps = (state) => {
-    return {
-        textPreview: state.text
-    }
-}
+const Preview = ({ markedText }) => {
+  return <div id="preview" dangerouslySetInnerHTML={ markedText } />;
+};
 
-
-class Preview extends Component {
-
-    markedPreview = () => {
-        let markedOptions = {
-            gfm: true
-          }
-        let content = this.props.textPreview;
-        let markedText = marked(content, markedOptions);
-        document.getElementById("preview").innerHTML = markedText;
-    }
-    
-    componentDidMount() {
-        this.markedPreview();
-    }
-
-    componentDidUpdate() {
-        this.markedPreview();
-    }
-
-    render() {
-    
-        return (
-            <div id="preview"></div>
-        );
-    }
-
-} 
-
-
-const ConnectedComponent = connect(mapStateToProps, null)(Preview);
-
-export default ConnectedComponent;
+export default Preview;
