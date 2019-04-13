@@ -33,22 +33,21 @@ const MarkdownBase = ({ text, updateText }) => {
   return (
     <div className="parent">
       <div className="container">
-      <div className="preview-item">
+        <div className="preview-item">
           <Preview markedText={createMarkup(text)} />
-        </div> 
+        </div>
         <div className="editor-item">
           <Editor text={text} updateText={updateText} />
         </div>
-        
       </div>
       <div className="gh-item">
-            <h4>
-              by{" "}
-              <a href="https://github.com/Belquira">
-                belquira <i className="fab fa-github-alt" />
-              </a>
-            </h4>
-          </div>
+        <h4>
+          by{" "}
+          <a href="https://github.com/Belquira">
+            belquira <i className="fab fa-github-alt" />
+          </a>
+        </h4>
+      </div>
     </div>
   );
 };
