@@ -4,7 +4,7 @@ import Preview from "./Preview";
 import { editText } from "../libs/Redux/actions";
 import { connect } from "react-redux";
 import marked from "marked";
-import "../css/App.css";
+import "../css/Markdown.css";
 
 const mapStateToProps = state => {
   return {
@@ -31,16 +31,24 @@ const createMarkup = text => {
 
 const MarkdownBase = ({ text, updateText }) => {
   return (
-    <div className="grid-container">
-      <div className="grid-item-editor">
-        <Editor text={ text } updateText={ updateText } />
+    <div className="parent">
+      <div className="container">
+      <div className="preview-item">
+          <Preview markedText={createMarkup(text)} />
+        </div> 
+        <div className="editor-item">
+          <Editor text={text} updateText={updateText} />
+        </div>
+        
       </div>
-      <div className="grid-item-info">
-        <h1>hola soy el holandes volador</h1>
-      </div>
-      <div className="grid-item-preview">
-        <Preview text={ text } markedText={ createMarkup(text) } />
-      </div>
+      <div className="gh-item">
+            <h4>
+              by{" "}
+              <a href="https://github.com/Belquira">
+                belquira <i className="fab fa-github-alt" />
+              </a>
+            </h4>
+          </div>
     </div>
   );
 };
